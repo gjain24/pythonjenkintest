@@ -22,13 +22,6 @@ pipeline {
                 sh "pytest testRoutes.py"
                 }
         }
-        
-        stage ('Clean Up'){
-            steps{
-                sh returnStatus: true, script: 'docker stop $(docker ps -a -q)'
-                sh returnStatus: true, script: 'docker rm $(docker ps -a -q)'
-            }
-        }
 
         stage('Build Image') {
             steps {
